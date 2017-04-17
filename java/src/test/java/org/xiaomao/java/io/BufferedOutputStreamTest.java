@@ -4,8 +4,11 @@ import java.io.BufferedOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.junit.Test;
+
 public class BufferedOutputStreamTest {
 
+	@Test
 	public void test1() {
 		try {
 			BufferedOutputStream bufout = new BufferedOutputStream(System.out, 5);
