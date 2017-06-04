@@ -1,4 +1,4 @@
-package org.xiaomao.java.thread;
+package org.xiaomao.java.concurrency.thread;
 
 public class PingPong extends Thread {
 	private String word; // what word to print

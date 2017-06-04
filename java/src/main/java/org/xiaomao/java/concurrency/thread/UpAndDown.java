@@ -1,4 +1,4 @@
-package org.xiaomao.java.thread;
+package org.xiaomao.java.concurrency.thread;
 
 public class UpAndDown {
 
