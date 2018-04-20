@@ -8,7 +8,7 @@ import org.junit.Test;
 public class InputStreamTest {
 
 	/**
-	 * InputStream.mark(int readlimit) 方法的readlimit参数 
+	 * InputStream.mark(int readlimit) 鏂规硶鐨剅eadlimit鍙傛暟 
 	 */
 	@Test
 	public void test1() {
@@ -33,7 +33,7 @@ public class InputStreamTest {
 	}
 	
 	/**
-	 * 测试read()方法
+	 * 娴嬭瘯read()鏂规硶
 	 */
 	@Test
 	public void test2() {
