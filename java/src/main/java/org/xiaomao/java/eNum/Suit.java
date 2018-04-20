@@ -6,7 +6,7 @@ public enum Suit {
 	String name;
 
 	Suit(String name) {
-		System.out.println(this.name);// »áÊä³önull£¬ÒòÎªthis.name»¹Î´±»¸³Öµ
+		System.out.println(this.name);// ä¼šè¾“å‡ºnullï¼Œå› ä¸ºthis.nameè¿˜æœªè¢«èµ‹å€¼
 		this.name = name;
 	}
 

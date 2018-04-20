@@ -8,7 +8,7 @@ import org.junit.Test;
 public class BufferedInputStreamTest {
 
 	/**
-	 * 测试BufferedInputStream.mark(int readlimit)和BufferedInputStream.reset()方法
+	 * 娴嬭瘯BufferedInputStream.mark(int readlimit)鍜孊ufferedInputStream.reset()鏂规硶
 	 */
 	@Test
 	public void test1() {
@@ -31,7 +31,7 @@ public class BufferedInputStreamTest {
 	}
 
 	/**
-	 * 测试read()方法
+	 * 娴嬭瘯read()鏂规硶
 	 */
 	@Test
 	public void test2() {
