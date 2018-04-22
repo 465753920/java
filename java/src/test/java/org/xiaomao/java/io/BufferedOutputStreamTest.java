@@ -10,6 +10,7 @@ public class BufferedOutputStreamTest {
 
 	@Test
 	public void test1() {
+		String jsonStr = "{}";
 		try {
 			BufferedOutputStream bout = new BufferedOutputStream(System.out, 5);
 			for (int i = 0; i < 12; i++) {
