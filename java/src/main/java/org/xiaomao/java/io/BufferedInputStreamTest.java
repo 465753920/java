@@ -1,9 +1,9 @@
 package org.xiaomao.java.io;
 
+import org.junit.Test;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
-
-import org.junit.Test;
 
 public class BufferedInputStreamTest {
 
