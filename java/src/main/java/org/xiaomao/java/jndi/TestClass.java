@@ -1,8 +1,11 @@
 package org.xiaomao.java.jndi;
 
+import com.sun.jndi.dns.DnsContext;
 import org.junit.Test;
 
-import javax.naming.*;
+import javax.naming.Context;
+import javax.naming.NamingEnumeration;
+import javax.naming.NamingException;
 import javax.naming.directory.Attributes;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
@@ -13,7 +16,6 @@ import java.util.TreeSet;
 public class TestClass {
     @Test
     public void test() {
-        String[] rgstring = {"file:///c:/"};
         try {
             // Create the initial context.  The environment
             // information specifies the JNDI provider to use
@@ -26,33 +28,18 @@ public class TestClass {
             );
             hashtableEnvironment.put(
                     Context.PROVIDER_URL,
-                    rgstring[0]
+                    "dns://211.136.192.6"
             );
-            Context context = new InitialContext(hashtableEnvironment);
-            // If you provide no other command line arguments,
-            // list all of the names in the specified context and
-            // the objects they are bound to.
-            if (rgstring.length == 1) {
-                NamingEnumeration namingenumeration = context.listBindings("");
-                while (namingenumeration.hasMore()) {
-                    Binding binding = (Binding) namingenumeration.next();
-                    System.out.println(
-                            binding.getName() + " " +
-                                    binding.getObject()
-                    );
+            InitialDirContext context = new InitialDirContext(hashtableEnvironment);
+            Attributes attrs = context.getAttributes("baidu.com", new String[]{"A"});
+            if (attrs != null) {
+                NamingEnumeration<?> dnsEntryIterator =
+                        attrs.get("A").getAll();
+                while (dnsEntryIterator.hasMoreElements()) {
+                    System.out.println(dnsEntryIterator.next().toString());
                 }
             }
-            // Otherwise, list the names and bindings for the
-            // specified arguments.
-            else {
-                for (int i = 1; i < rgstring.length; i++) {
-                    Object object = context.lookup(rgstring[i]);
-                    System.out.println(
-                            rgstring[i] + " " +
-                                    object
-                    );
-                }
-            }
+
             context.close();
         } catch (NamingException namingexception) {
             namingexception.printStackTrace();
@@ -61,7 +48,7 @@ public class TestClass {
 
     @Test
     public void test2() {
-        String[] records = getRecords("devguerrilla.com", "A");
+        String[] records = getRecords("baidu.com", "A");
         for (int i = 0; i < records.length; i++) {
             System.out.println(records[i]);
         }
@@ -75,6 +62,7 @@ public class TestClass {
             envProps.put(Context.INITIAL_CONTEXT_FACTORY,
                     "com.sun.jndi.dns.DnsContextFactory");
             DirContext dnsContext = new InitialDirContext(envProps);
+            Object o = dnsContext.lookup("baidu.com");
             Attributes dnsEntries = dnsContext.getAttributes(
                     hostName, new String[]{type});
             if (dnsEntries != null) {
